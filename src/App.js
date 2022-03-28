@@ -21,7 +21,7 @@ function openAttachment (attachment) {
 
 const Email = ({ email, isOpen, onToggle }) => {
   let from = email.from.value[0];
-  let to = email.to.value[0];
+  let to = (email.to ? : email.to.value[0] : '');
   return (
     <Card>
       <CardHeader onClick={onToggle}>
@@ -47,7 +47,7 @@ const Email = ({ email, isOpen, onToggle }) => {
           </ListGroupItem>
           <ListGroupItem>
             <strong>To:&nbsp;</strong>
-            <span dangerouslySetInnerHTML={{ __html: email.to.html }} />
+            <span dangerouslySetInnerHTML={{ __html: (email.to ? email.to.html : '') }} />
           </ListGroupItem>
           <ListGroupItem>
             <strong>Date:&nbsp;</strong>
